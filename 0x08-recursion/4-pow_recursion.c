@@ -4,9 +4,7 @@
  * @y: The exponent.
  *
  * Description:
- *   This function calculates and returns the value of x raised to the power of y
- *   using recursion. If the exponent y is lower than 0, the function returns -1
- *   to indicate an error.
+ *   pow function.
  *
  * Return: The value of x raised to the power of y, or -1 if an error occurs.
  */
