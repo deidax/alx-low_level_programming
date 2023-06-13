@@ -56,5 +56,3 @@ Valgrind provides detailed information about memory leaks, including the exact l
 It is recommended to use Valgrind during development and testing to ensure proper memory management and prevent memory leaks.
 
 ---
-
-This README file provides a brief introduction to memory allocation concepts in C, the usage of `malloc` and `free` functions, the benefits of dynamic memory allocation, and the utilization of Valgrind for memory leak detection. It serves as a guide to assist developers in understanding and managing memory effectively in C
