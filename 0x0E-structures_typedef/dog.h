@@ -12,7 +12,7 @@
  *   and the name of its owner. It is used to store and manipulate data related
  *   to individual dogs.
  */
-struct dog 
+struct dog
 {
 	char *name;
 	float age;
