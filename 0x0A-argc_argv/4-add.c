@@ -21,20 +21,18 @@ int main(int argc, char *argv[])
 	int i, j;
 	int sum = 0;
 	int len;
-	char *c;
 
 	if (argc <= 1)
 	{
-		printf("%d\n", 0);
+		printf("0\n");
 		return (0);
 	}
 	for (i = 1; i < argc; i++)
 	{
-		c = argv[i];
-		len = strlen(c);
-		for (j = 0; i < len; j++)
+		len = strlen(argv[i]);
+		for (j = 0; j < len; j++)
 		{
-			if (isdigit(*(c+1)) == 0)
+			if (!isdigit(argv[i][j]))
 			{
 				printf("Error\n");
 				return (1);
