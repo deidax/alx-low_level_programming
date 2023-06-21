@@ -25,13 +25,15 @@ int _atoi(char *s)
 		if (s[i] == '-')
 			sign *= -1;
 		/* Process the digits */
-		if(s[i] >= '0' && s[i] <= '9')
+		else if (s[i] >= '0' && s[i] <= '9')
 		{
 			/* Multiply the result by 10 and add the current digit */
 			result = (result * 10) + (s[i] - '0');
 		}
+		else if (s[i] >= 'A' && s[i] <= 'Z' && result != 0)
+			break;
 	}
-	return result * sign;
+	return (result * sign);
 
 }
 
