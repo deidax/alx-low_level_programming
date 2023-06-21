@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include <string.h>
 /**
  * main - Adds positive numbers.
  * @argc: The number of command line arguments.
@@ -19,6 +20,7 @@ int main(int argc, char *argv[])
 {
 	int i, j;
 	int sum = 0;
+	int len;
 
 	if (argc <= 1)
 	{
@@ -27,9 +29,10 @@ int main(int argc, char *argv[])
 	}
 	for (i = 1; i < argc; i++)
 	{
-		for (j = 0; argv[i][j] != '\0'; j++)
+		len = strlen(argv[i]);
+		for (j = 0; i < len; j++)
 		{
-			if (!isdigit(argv[i][j]))
+			if (isdigit(argv[j]) == 0)
 			{
 				printf("Error\n");
 				return (1);
@@ -37,5 +40,6 @@ int main(int argc, char *argv[])
 		}
 		sum += atoi(argv[i]);
 	}
+	printf("%i\n", sum);
 	return (sum);
 }
