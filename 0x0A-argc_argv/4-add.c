@@ -21,6 +21,7 @@ int main(int argc, char *argv[])
 	int i, j;
 	int sum = 0;
 	int len;
+	char *c;
 
 	if (argc <= 1)
 	{
@@ -29,10 +30,11 @@ int main(int argc, char *argv[])
 	}
 	for (i = 1; i < argc; i++)
 	{
-		len = strlen(argv[i]);
+		c = argv[i];
+		len = strlen(c);
 		for (j = 0; i < len; j++)
 		{
-			if (isdigit(argv[j]) == 0)
+			if (isdigit(*(c+1)) == 0)
 			{
 				printf("Error\n");
 				return (1);
