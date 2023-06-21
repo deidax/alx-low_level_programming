@@ -17,7 +17,7 @@
 int _atoi(char *s)
 {
 	int sign = 1;/* Sign of the number, initialized to positive */
-	int result = 0;/* Accumulator for the converted integer */
+	unsigned int result = 0;/* Accumulator for the converted integer */
 	int i;
 
 	for (i = 0; s[i] != '\0'; i++)
