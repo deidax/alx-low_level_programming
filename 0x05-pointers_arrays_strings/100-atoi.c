@@ -18,22 +18,20 @@ int _atoi(char *s)
 {
 	int sign = 1;/* Sign of the number, initialized to positive */
 	int result = 0;/* Accumulator for the converted integer */
+	int i;
 
-	/* Check for leading sign */
-	if (*s == '-' || *s == '+')
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		if (*s == '-')
-			sign = -1;
-		s++;/* Move to the next character */
-	}
+		if (s[i] == '-')
+			sign *= -1;
 		/* Process the digits */
-		while (*s >= '0' && *s <= '9')
+		if(s[i] >= '0' && s[i] <= '9')
 		{
 			/* Multiply the result by 10 and add the current digit */
-			result = (result * 10) + (*s - '0');
-			s++;/* Move to the next character */
+			result = (result * 10) + (s[i] - '0');
 		}
-
+	}
 	return result * sign;
+
 }
 
