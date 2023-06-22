@@ -16,7 +16,7 @@
 int (*get_op_func(char *s))(int, int)
 {
 	char *opt_char = "+-*/%";
-	void (*opt_cmd[])(int, int) = {op_add, op_sub, op_mul, op_div, op_mod};
+	int (*opt_cmd[])(int, int) = {op_add, op_sub, op_mul, op_div, op_mod};
 	int c = 0;
 
 	do {
