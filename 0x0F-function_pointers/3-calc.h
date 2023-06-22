@@ -1,6 +1,8 @@
 #ifndef CALC_H
 #define CALC_H
-
+#ifndef NULL
+#define NULL ((void *)0)
+#endif
 /**
  * struct op - Struct op
  *

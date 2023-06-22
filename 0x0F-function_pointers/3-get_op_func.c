@@ -20,11 +20,10 @@ int (*get_op_func(char *s))(int, int)
 	int c = 0;
 
 	do {
-		if (opt_char == s)
+		if (*opt_char == *s)
 			return (opt_cmd[c]);
 		c++;
 		opt_char++;
-	}
-	while (opt_char != '\0')
+	} while (*opt_char != '\0');
 	return (NULL);
 }
