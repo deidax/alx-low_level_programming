@@ -19,11 +19,12 @@ int (*get_op_func(char *s))(int, int)
 	int (*opt_cmd[])(int, int) = {op_add, op_sub, op_mul, op_div, op_mod};
 	int c = 0;
 
-	do {
+	while (*opt_char != '\0')
+	{
 		if (*opt_char == *s)
 			return (opt_cmd[c]);
 		c++;
 		opt_char++;
-	} while (*opt_char != '\0');
+	}
 	return (NULL);
 }
