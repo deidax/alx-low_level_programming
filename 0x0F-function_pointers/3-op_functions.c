@@ -21,8 +21,8 @@ int op_add(int a, int b)
  * @b: The second integer.
  *
  * Description:
- *    This function subtracts the second integer (@b) from the first integer (@a)
- *    and returns the difference. It uses the prototype int op_sub(int a, int b).
+ *    subtracts the second integer (@b) from the first integer (@a)
+ *    and returns the difference.
  *
  * Return:
  *    The difference between @a and @b.
@@ -65,7 +65,7 @@ int op_div(int a, int b)
 		printf("Error\n");
 		return (100);
 	}
-	return a / b;
+	return (a / b);
 }
 /**
  * op_mod - Computes the remainder of the division of two integers.
@@ -82,10 +82,10 @@ int op_div(int a, int b)
 int op_mod(int a, int b)
 {
 	if (b == 0)
-        {
-                printf("Error\n");
-                return (100);
-        }
-        return a % b;
+	{
+		printf("Error\n");
+		return (100);
+	}
+	return (a % b);
 }
 
