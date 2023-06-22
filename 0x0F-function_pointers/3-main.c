@@ -30,5 +30,5 @@ int main(int argc, char **argv)
 	num_2 = atoi(argv[3]);
 	result = fun_cmd(num_1, num_2);
 	printf("%i\n", result);
-	return (1);
+	return (0);
 }
