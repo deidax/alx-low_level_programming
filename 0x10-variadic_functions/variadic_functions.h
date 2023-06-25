@@ -29,7 +29,7 @@ void print_char(const unsigned int n, ...)
 	for (i = 0; i < n; i++)
 	{
 		v = va_arg(args, int);
-		_putchar(v);
+		printf("%c", v);
 	}
 }
 /**
