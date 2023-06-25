@@ -22,7 +22,7 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 	int tmp_n = 0;
 
 	if (n == 0 && separator != NULL)
-		printf("%s\n", separator);
+		printf("%s", separator);
 	else
 	{
 		va_start(args, n);
@@ -34,6 +34,6 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 			else
 				printf("%i", tmp_n);
 		}
-		printf("\n");
 	}
+	printf("\n");
 }
