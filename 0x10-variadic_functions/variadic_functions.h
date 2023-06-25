@@ -11,5 +11,5 @@ void print_chat(const unsigned int n, ...);
 void print_int(const unsigned int n, ...);
 void print_float(const unsigned int n, ...);
 void print_string(const unsigned int n, ...);
-void (*get_format_func(char *s))(const unsigned int n, ...)
+void (*get_format_func(char *s))(const unsigned int n, ...);
 #endif

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdarg.h>
+#include <string.h>
 #include "variadic_functions.h"
 /**
  * print_all - Prints anything based on the given format.
@@ -116,4 +117,20 @@ void print_string(const unsigned int n, ...)
 		else
 			printf("(nil)");
 	}
+}
+void (*get_format_func(char *s))(const unsigned int n, ...)
+{
+	char *opt_char = "cifs";
+	void (*opt_cmd[])(const unsigned n, ...) = {print_chat, print_int, print_float, print_string};
+	int c = 0;
+	char *tmp_s = s;
+
+	while (*opt_char != '\0')
+	{
+		if (*opt_char == *s && *(tmp_s + 1) == '\0')
+			return (opt_cmd[c]);
+		c++;
+		opt_char++;
+	}
+	return (NULL);
 }
