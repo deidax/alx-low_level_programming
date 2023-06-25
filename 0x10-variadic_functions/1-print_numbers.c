@@ -21,16 +21,19 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 	unsigned int i = 0;
 	int tmp_n = 0;
 
-	if (n == 0)
-		return;
-	va_start(args, n);
-	for (i = 1; i <= n ; i++)
+	if (n == 0 && separator != NULL)
+		printf("%s", separator);
+	else
 	{
-		tmp_n = va_arg(args, int);
-		if (i < n && separator != NULL)
-			printf("%i%s", tmp_n, separator);
-		else
-			printf("%i", tmp_n);
+		va_start(args, n);
+		for (i = 1; i <= n ; i++)
+		{
+			tmp_n = va_arg(args, int);
+			if (i < n && separator != NULL)
+				printf("%i%s", tmp_n, separator);
+			else
+				printf("%i", tmp_n);
+		}
+		printf("\n");
 	}
-	printf("\n");
 }
