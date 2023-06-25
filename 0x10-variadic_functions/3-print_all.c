@@ -65,15 +65,15 @@ void print_char(const unsigned int n, ...)
 void print_int(const unsigned int n, ...)
 {
 	int i = 0;
-        va_list args;
-        int v;
+	va_list args;
+	int v;
 
         va_start(args, n);
         for (i = 0; i < n; i++)
         {
                 v = va_arg(args, int);
 		if (v != NULL)
-                	printf("%i", v);
+			printf("%i", v);
         }
 
 }
@@ -91,7 +91,7 @@ void print_int(const unsigned int n, ...)
 void print_float(const unsigned int n, ...)
 {
 	int i = 0;
-        va_list args;
+	va_list args;
         float v;
 
         va_start(args, n);
@@ -116,8 +116,8 @@ void print_float(const unsigned int n, ...)
 void print_string(const unsigned int n, ...)
 {
 	int i = 0;
-        va_list args;
-        char *v;
+	va_list args;
+	char *v;
 
         va_start(args, n);
         for (i = 0; i < n; i++)
