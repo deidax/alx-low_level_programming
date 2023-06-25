@@ -34,6 +34,11 @@ void print_strings(const char *separator, const unsigned int n, ...)
 		for (i = 1; i <= n ; i++)
 		{
 			tmp_s = va_arg(args, char *);
+			if (tmp_s == NULL)
+			{
+				printf("(nil)\n");
+				break;
+			}
 			if (i < n && separator != NULL)
 				printf("%s%s", tmp_s, separator);
 			else
