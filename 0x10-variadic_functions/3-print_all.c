@@ -25,14 +25,11 @@ void print_all(const char * const format, ...)
 /**
  * print_char - Prints a character to the standard output.
  *
- * @c: The character to be printed.
+ * @n: The number of integers passed to the function (will be 1).
+ * @...: Variable number of arguments containing char.
  *
  * Description:
- *      This function takes a character @c as input and prints it to the
- *      standard output. The character is displayed on a single line.
- *
- * Return:
- *      None.
+ *	This function prints a char
  */
 void print_char(const unsigned int n, ...)
 {
@@ -45,22 +42,16 @@ void print_char(const unsigned int n, ...)
 	{
 		v = va_arg(args, char);
 		if (v != NULL)
-			_putchar(v);
+		_putchar(v);
 	}
 }
 /**
  * print_int - Prints the given integer to the standard output.
  *
- * @num: The integer to be printed.
  *
- * Description:
- *     This function takes an integer @num as input and prints it to the
- *     standard output. It does not return any value.
+ * @n: The number of integers passed to the function (will be 1).
+ * @...: Variable number of arguments containing integers.
  *
- * Usage:
- *     print_integer(42);
- *
- *     The above example will print the integer 42 to the standard output.
  */
 void print_int(const unsigned int n, ...)
 {
@@ -68,23 +59,22 @@ void print_int(const unsigned int n, ...)
 	va_list args;
 	int v;
 
-        va_start(args, n);
-        for (i = 0; i < n; i++)
-        {
-                v = va_arg(args, int);
+	va_start(args, n);
+	for (i = 0; i < n; i++)
+	{
+		v = va_arg(args, int);
 		if (v != NULL)
-			printf("%i", v);
-        }
-
+		printf("%i", v);
+	}
 }
 /**
  * print_float - Prints a float value.
- * @f: The float value to be printed.
+ *
+ * @n: The number of integers passed to the function (will be 1).
+ * @...: Variable number of arguments containing float
  *
  * Description:
- *   This function takes a float value @f and prints it to the standard output.
- *   The function ensures that the float is displayed with a precision of 2
- *   decimal places. The printed float is followed by a new line character.
+ *	This function prints a float
  *
  * Return: None.
  */
@@ -92,26 +82,24 @@ void print_float(const unsigned int n, ...)
 {
 	int i = 0;
 	va_list args;
-        float v;
+	float v;
 
-        va_start(args, n);
-        for (i = 0; i < n; i++)
-        {
-                v = va_arg(args, float);
-                if (v != NULL)
-                        printf("%d", v);
-        }
-
+	va_start(args, n);
+	for (i = 0; i < n; i++)
+	{
+		v = va_arg(args, float);
+		if (v != NULL)
+			printf("%d", v);
+	}
 }
 /**
  * print_string - Prints a given string.
  *
- * @str: The string to be printed.
+ * @n: The number of integers passed to the function (will be 1).
+ * @...: Variable number of arguments containing float
  *
  * Description:
  *     This function prints the given string to the standard output.
- *
- * Return: None.
  */
 void print_string(const unsigned int n, ...)
 {
@@ -119,14 +107,13 @@ void print_string(const unsigned int n, ...)
 	va_list args;
 	char *v;
 
-        va_start(args, n);
-        for (i = 0; i < n; i++)
-        {
-                v = va_arg(args, char *);
-                if (v != NULL)
-                        printf("%s", v);
+	va_start(args, n);
+	for (i = 0; i < n; i++)
+	{
+		v = va_arg(args, char *);
+		if (v != NULL)
+			printf("%s", v);
 		else
 			printf("(nil)");
-        }
-
+	}
 }
