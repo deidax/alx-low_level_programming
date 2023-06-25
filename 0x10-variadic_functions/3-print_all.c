@@ -34,10 +34,19 @@ void print_all(const char * const format, ...)
  * Return:
  *      None.
  */
-void print_char(char c)
+void print_char(const unsigned int n, ...)
 {
-	if (c != NULL)
-		_putchar(c);
+	int i = 0;
+	va_list args;
+	char v;
+
+	va_start(args, n);
+	for (i = 0; i < n; i++)
+	{
+		v = va_arg(args, char);
+		if (v != NULL)
+			_putchar(v);
+	}
 }
 /**
  * print_int - Prints the given integer to the standard output.
@@ -53,10 +62,20 @@ void print_char(char c)
  *
  *     The above example will print the integer 42 to the standard output.
  */
-void print_int(int i)
+void print_int(const unsigned int n, ...)
 {
-	if (i != NULL)
-		printf("%i", i);
+	int i = 0;
+        va_list args;
+        int v;
+
+        va_start(args, n);
+        for (i = 0; i < n; i++)
+        {
+                v = va_arg(args, int);
+		if (v != NULL)
+                	printf("%i", v);
+        }
+
 }
 /**
  * print_float - Prints a float value.
@@ -69,10 +88,20 @@ void print_int(int i)
  *
  * Return: None.
  */
-void print_float(float f)
+void print_float(const unsigned int n, ...)
 {
-	if (f != NULL)
-		printf("%d", f);
+	int i = 0;
+        va_list args;
+        float v;
+
+        va_start(args, n);
+        for (i = 0; i < n; i++)
+        {
+                v = va_arg(args, float);
+                if (v != NULL)
+                        printf("%d", v);
+        }
+
 }
 /**
  * print_string - Prints a given string.
@@ -84,12 +113,20 @@ void print_float(float f)
  *
  * Return: None.
  */
-void print_string(char *s)
+void print_string(const unsigned int n, ...)
 {
-	if (s == NULL)
-	{
-		printf("(nil)");
-		return;
-	}
-	printf("%s", s);
+	int i = 0;
+        va_list args;
+        char *v;
+
+        va_start(args, n);
+        for (i = 0; i < n; i++)
+        {
+                v = va_arg(args, char *);
+                if (v != NULL)
+                        printf("%s", v);
+		else
+			printf("(nil)");
+        }
+
 }
