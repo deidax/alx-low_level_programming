@@ -1,7 +1,7 @@
+#include <string.h>
 #include <stdio.h>
 #include <stdarg.h>
-#include <string.h>
-#include "variadic_functions.h"
+
 /**
  * print_all - Prints anything based on the given format.
  * @format: A list of types of arguments passed to the function.
@@ -22,115 +22,17 @@
  */
 void print_all(const char * const format, ...)
 {
-}
-/**
- * print_char - Prints a character to the standard output.
- *
- * @n: The number of integers passed to the function (will be 1).
- * @...: Variable number of arguments containing char.
- *
- * Description:
- *	This function prints a char
- */
-void print_char(const unsigned int n, ...)
-{
-	int i = 0;
+	int num_args = strlen(format);
 	va_list args;
-	char v;
+	void (*fun_format)(const unsigned int n, ...);
+	int i;
 
-	va_start(args, n);
-	for (i = 0; i < n; i++)
+	va_start(args, format);
+	for (i = 0; i < num_args; i++)
 	{
-		v = va_arg(args, char);
-		if (v != NULL)
-		_putchar(v);
+		fun_format = get_format_func(format);
+		fun_format(1, args);
+		printf(", ");
 	}
-}
-/**
- * print_int - Prints the given integer to the standard output.
- *
- *
- * @n: The number of integers passed to the function (will be 1).
- * @...: Variable number of arguments containing integers.
- *
- */
-void print_int(const unsigned int n, ...)
-{
-	int i = 0;
-	va_list args;
-	int v;
-
-	va_start(args, n);
-	for (i = 0; i < n; i++)
-	{
-		v = va_arg(args, int);
-		if (v != NULL)
-		printf("%i", v);
-	}
-}
-/**
- * print_float - Prints a float value.
- *
- * @n: The number of integers passed to the function (will be 1).
- * @...: Variable number of arguments containing float
- *
- * Description:
- *	This function prints a float
- *
- * Return: None.
- */
-void print_float(const unsigned int n, ...)
-{
-	int i = 0;
-	va_list args;
-	float v;
-
-	va_start(args, n);
-	for (i = 0; i < n; i++)
-	{
-		v = va_arg(args, float);
-		if (v != NULL)
-			printf("%d", v);
-	}
-}
-/**
- * print_string - Prints a given string.
- *
- * @n: The number of integers passed to the function (will be 1).
- * @...: Variable number of arguments containing float
- *
- * Description:
- *     This function prints the given string to the standard output.
- */
-void print_string(const unsigned int n, ...)
-{
-	int i = 0;
-	va_list args;
-	char *v;
-
-	va_start(args, n);
-	for (i = 0; i < n; i++)
-	{
-		v = va_arg(args, char *);
-		if (v != NULL)
-			printf("%s", v);
-		else
-			printf("(nil)");
-	}
-}
-void (*get_format_func(char *s))(const unsigned int n, ...)
-{
-	char *opt_char = "cifs";
-	void (*opt_cmd[])(const unsigned n, ...) = {print_chat, print_int, print_float, print_string};
-	int c = 0;
-	char *tmp_s = s;
-
-	while (*opt_char != '\0')
-	{
-		if (*opt_char == *s && *(tmp_s + 1) == '\0')
-			return (opt_cmd[c]);
-		c++;
-		opt_char++;
-	}
-	return (NULL);
+	printf("\n");
 }
