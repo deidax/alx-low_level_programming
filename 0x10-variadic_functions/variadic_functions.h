@@ -87,25 +87,20 @@ void print_string(va_list args)
  *   Pointer to a function that performs the format corresponding to @s.
  */
 
-void (*get_format_func(const char * const s, int i))(va_list)
+void (*get_format_func(char c))(va_list)
 {
-	char *opt_char = "cifs";
+	char opt_char[] = "cifs";
 	void (*opt_cmd[])(va_list) = {print_char, print_int, print_float, print_string};
-	const char *s_ptr;
+	int i = 0;
 	
-	while (*opt_char != '\0')
-	{
-		s_ptr = s;
-		while (*s_ptr != '\0')
+		while (opt_char[i] != '\0')
 		{
-			if (*opt_char == *s_ptr)
+			if (opt_char[i] == c)
 			{
 				return (opt_cmd[i]);
 			}
-			s_ptr++;
+			i++;
 		}
-		opt_char++;
-	}
 	return (NULL);
 }
 #endif
