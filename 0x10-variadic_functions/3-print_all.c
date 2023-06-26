@@ -41,8 +41,7 @@ void print_all(const char * const format, ...)
 		{
 			fun_format = get_format_func(f_c);
 			fun_format(copy);
-			if (i < (num_args - 1))
-				printf(", ");
+			printf(", ");
 		}
 		i++;
 	}
