@@ -34,7 +34,7 @@ void print_char(va_list args)
 void print_int(va_list args)
 {
 	int v;
-	
+
 	v = va_arg(args, int);
 	printf("%i", v);
 }
@@ -76,7 +76,7 @@ void print_string(va_list args)
 /**
  * get_format_func - Returns a pointer to a function based on the format.
  *
- * @s: The format string.
+ * @c: The format string.
  *
  * Description:
  *   The get_format_func function takes an operator string @s as input and
@@ -90,9 +90,11 @@ void print_string(va_list args)
 void (*get_format_func(char c))(va_list)
 {
 	char opt_char[] = "cifs";
-	void (*opt_cmd[])(va_list) = {print_char, print_int, print_float, print_string};
+	void (*opt_cmd[])(va_list) = {
+		print_char, print_int, print_float, print_string
+	};
 	int i = 0;
-	
+
 	while (opt_char[i] != '\0')
 	{
 		if (opt_char[i] == c)
