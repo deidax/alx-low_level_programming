@@ -22,13 +22,16 @@ void (*get_format_func(char c))(va_list);
  */
 void print_all(const char * const format, ...)
 {
-	int num_args = strlen(format);
+	int num_args;
 	va_list a;
 	va_list copy;
 	void (*fun_format)(va_list);
 	char f_c;
 	int i = 0;
 
+	if (format == NULL)
+		return;
+	num_args = strlen(format);
 	va_start(a, format);
 	va_copy(copy, a);
 	while (i < num_args)
