@@ -26,15 +26,22 @@ void print_all(const char * const format, ...)
 	va_list a;
 	va_list copy;
 	void (*fun_format)(va_list);
-	int i;
+	char f_c;
+	int i = 0;
 
 	va_start(a, format);
 	va_copy(copy, a);
-	for (i = 0; i < num_args; i++)
+	while (i < num_args)
 	{
-		fun_format = get_format_func(format[i]);
-		fun_format(copy);
-		printf(", ");
+		f_c = format[i];
+		if (f_c == 'c' || f_c == 'i' || f_c == 'f' || f_c == 's')
+		{
+			fun_format = get_format_func(f_c);
+			fun_format(copy);
+			if (i < (num_args - 1))
+				printf(", ");
+		}
+		i++;
 	}
 	va_end(a);
 	printf("\n");

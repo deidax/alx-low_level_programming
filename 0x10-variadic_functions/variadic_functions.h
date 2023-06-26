@@ -93,14 +93,14 @@ void (*get_format_func(char c))(va_list)
 	void (*opt_cmd[])(va_list) = {print_char, print_int, print_float, print_string};
 	int i = 0;
 	
-		while (opt_char[i] != '\0')
+	while (opt_char[i] != '\0')
+	{
+		if (opt_char[i] == c)
 		{
-			if (opt_char[i] == c)
-			{
-				return (opt_cmd[i]);
-			}
-			i++;
+			return (opt_cmd[i]);
 		}
+		i++;
+	}
 	return (NULL);
 }
 #endif
