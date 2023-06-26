@@ -46,6 +46,5 @@ void print_all(const char * const format, ...)
 		i++;
 	}
 	va_end(a);
-	if (num_args > 0)
-		printf("\n");
+	printf("\n");
 }
