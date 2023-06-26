@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdarg.h>
-void (*get_format_func(const char * const s))(const unsigned int n, ...);
+void (*get_format_func(const char * const s, int i))(va_list);
 /**
  * print_all - Prints anything based on the given format.
  * @format: A list of types of arguments passed to the function.
@@ -23,16 +23,19 @@ void (*get_format_func(const char * const s))(const unsigned int n, ...);
 void print_all(const char * const format, ...)
 {
 	int num_args = strlen(format);
-	va_list args;
-	void (*fun_format)(const unsigned int n, ...);
+	va_list a;
+	va_list copy;
+	void (*fun_format)(va_list);
 	int i;
 
-	va_start(args, format);
+	va_start(a, format);
+	va_copy(copy, a);
 	for (i = 0; i < num_args; i++)
 	{
-		fun_format = get_format_func(format);
-		fun_format(1, args);
+		fun_format = get_format_func(format, i);
+		fun_format(copy);
 		printf(", ");
 	}
+	va_end(a);
 	printf("\n");
 }
