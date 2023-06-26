@@ -5,6 +5,7 @@
 #endif
 #include <stdio.h>
 #include <stdarg.h>
+#include <string.h>
 int _putchar(char c);
 int sum_them_all(const unsigned int n, ...);
 void print_numbers(const char *separator, const unsigned int n, ...);
@@ -72,6 +73,23 @@ void print_string(va_list args)
 		printf("%s", v);
 	else
 		printf("(nil)");
+}
+/**
+ * get_format - Get the length of a format string.
+ * @format: The format string.
+ *
+ * Description:
+ *   This function calculates the length of the format string @format.
+ *   If the format string is NULL, the function returns 0.
+ *
+ * Return:
+ *   The length of the format string, or 0 if @format is NULL.
+ */
+int get_format(const char * const format)
+{
+	if (format == NULL)
+		return (0);
+	return (strlen(format));
 }
 /**
  * get_format_func - Returns a pointer to a function based on the format.
