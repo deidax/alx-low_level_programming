@@ -17,15 +17,15 @@ list_t *add_node_end(list_t **head, const char *str)
 	node->len = strlen(str);
 	node->next = NULL;
 	if (tmp_node == NULL)
-		tmp_node = node;
-	else
 	{
-		while (tmp_node->next != NULL)
-		{
-			tmp_node = tmp_node->next;
-		}
-		tmp_node->next = node;
+		*head = node;
+		return (*head);
 	}
+	while (tmp_node->next != NULL)
+	{
+		tmp_node = tmp_node->next;
+	}
+	tmp_node->next = node;
 	*head = tmp_node;
 	return (*head);
 }
