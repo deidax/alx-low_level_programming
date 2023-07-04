@@ -3,9 +3,11 @@ listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 {
 	unsigned int i = 0;
 	
-	for (; head != NULL && i != index; i++)
+	for (; head != NULL; i++)
+	{
+		if (i == index)
+			return (head);
 		head = head->next;
-	if (head != NULL)
-		return (head);
+	}
 	return (NULL);
 }
