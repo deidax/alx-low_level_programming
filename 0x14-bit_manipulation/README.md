@@ -1,5 +1,5 @@
 # Bit Manipulation and Bitwise Operators
----
+
 Bit manipulation is the process of modifying or extracting specific bits within binary data. It involves performing operations at the bit level, allowing for more efficient and compact coding techniques. Bitwise operators are used to manipulate individual bits or sets of bits within variables.
 
 ## Bitwise Operators
