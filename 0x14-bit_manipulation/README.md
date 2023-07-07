@@ -47,7 +47,9 @@ sizeof(unsigned long int) * 8 - 1 = 63
 
 ```
 
+
 In this example, the mask `m` is initialized with the binary value `1000000000000000000000000000000000000000000000000000000000000000`, which represents the most significant bit set to 1 and all other bits set to 0.
+
 ---
 ## Conclusion
 
