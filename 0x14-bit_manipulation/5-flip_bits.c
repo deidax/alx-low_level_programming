@@ -17,7 +17,7 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 	if (n > ULONG_MAX || m > ULONG_MAX)
 		return (-1);
 	xored = (n ^ m);
-	/* Using Brian Kernighan's Algorithm to the number of set bits */
+	/* Using Brian Kernighan's Algorithm to count the number of set bits */
 	while (xored > 0)
 	{
 		xored &= (xored - 1);
