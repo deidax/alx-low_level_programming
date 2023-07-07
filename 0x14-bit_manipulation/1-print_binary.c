@@ -16,7 +16,7 @@
  */
 void print_binary(unsigned long int n)
 {
-	unsigned int m = 32768;
+	unsigned long int m = 1UL << (sizeof(unsigned long int) * 8 - 1);
 	int RMBF = 0; /* right most bite found ? */
 
 	if (n == 0)
