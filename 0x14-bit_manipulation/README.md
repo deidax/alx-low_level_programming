@@ -24,7 +24,7 @@ Bit manipulation can be used for various purposes, such as:
 - Shifting bits: Use the left shift (`<<`) or right shift (`>>`) operators to shift the bits of a value to the left or right by a specified number of positions.
 ---
 ### Creating a 64 bits mask
-The line `unsigned long int m = 1UL << (sizeof(unsigned long int) * 8 - 1);` in C is used to initialize an `unsigned long int` variable named `m` with a mask value. Let's break down this line and explain each part:
+The line `unsigned long int m = 1UL << (sizeof(unsigned long int) * 8 - 1);` in Task 1.1 is used to initialize an `unsigned long int` variable named `m` with a mask value.
 
 1. `sizeof(unsigned long int) * 8`: The `sizeof` operator returns the size of the `unsigned long int` data type in bytes. By multiplying it with 8, we get the number of bits in an `unsigned long int` value.
 
