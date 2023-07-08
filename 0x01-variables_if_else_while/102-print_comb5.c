@@ -13,6 +13,7 @@ int main(void)
 			putchar(' ');
 			for (k = j; k <= 9; k++)
 			{
+				putchar(j + '0');
 				putchar(k + '0');
 				putchar(',');
 			}
