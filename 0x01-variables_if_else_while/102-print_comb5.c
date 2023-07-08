@@ -6,9 +6,9 @@ int main(void)
 
 	for (i = 0; i <=9; i++)
 	{
-		putchar(i + '0');
 		for (j = i; j <= 9; j++)
 		{
+			putchar(i + '0');
 			putchar(j + '0');
 			putchar(' ');
 			for (k = j; k <= 9; k++)
