@@ -23,7 +23,7 @@ int (*get_op_func(char *s))(int, int)
 
 	while (*opt_char != '\0')
 	{
-		if (*opt_char == *s && s[1] == '\0')
+		if (*opt_char == *s && *(s + 1) == '\0')
 			return (opt_cmd[c]);
 		c++;
 		opt_char++;
