@@ -1,22 +1,32 @@
 #include <stdio.h>
-
+/**
+ * main - Program to print all possible combinations of two two-digit numbers
+ *
+ * Return: 0
+ */
 int main(void)
 {
-	int i, j, k, l;
+	int i, j, mn, ln;
+	int counter = 0;
 
-	for (i = 0; i <= 9; i++)
+	for (i = 0; i <= 99; i++)
 	{
-		for (j = 0; j <= 9; j++)
+		for (j = 1; j <= 99; j++)
 		{
-			for (k = 0; k <= 9; k++)
+			if (j > i)
 			{
-				for (l = 0; l <= 9; l++)
+				mn = i / 10;
+				ln = i % 10;
+				putchar(mn + '0');
+				putchar(ln + '0');
+				mn = j / 10;
+				ln = j % 10;
+				putchar(' ');
+				putchar(mn + '0');
+				putchar(ln + '0');
+				counter++;
+				if (counter < 4950)
 				{
-					putchar(i + '0');
-					putchar(j + '0');
-					putchar(' ');
-					putchar(k + '0');
-					putchar(l + '0');
 					putchar(',');
 					putchar(' ');
 				}
