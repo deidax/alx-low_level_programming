@@ -12,7 +12,7 @@ void print_to_98(int n)
 		printf("98\n");
 		return;
 	}
-	printf("%i ,", n);
+	printf("%i, ", n);
 	if (n < 98)
 		print_to_98(n + 1);
 	else
