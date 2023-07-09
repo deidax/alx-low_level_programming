@@ -8,7 +8,9 @@ void print_times_table_recursive(int n, int i, int k)
 	{
 		if (k <= n)
 		{
-			printf("%i,\t", i * k);
+			printf("%i", i * k);
+			if (k != n)
+				printf(",\t");
 			print_times_table_recursive(n, i, k + 1);
 		}
 		else
