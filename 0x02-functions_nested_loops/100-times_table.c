@@ -1,17 +1,25 @@
 #include <stdio.h>
-void print_times_table(int n)
+void print_times_table_recursive(int n, int i, int k)
 {
-	int i , k;
-
 	if (n > 15 || n < 0)
 		return;
-	for (i = 0; i <= n; i++)
+
+	if (i <= n)
 	{
-		for (k = 0; k <= n; k++)
+		if (k <= n)
 		{
 			printf("%i,\t", i * k);
+			print_times_table_recursive(n, i, k + 1);
 		}
-		printf("\n");
+		else
+		{
+			printf("\n");
+			print_times_table_recursive(n, i + 1, 0);
+		}
 	}
+}
 
+void print_times_table(int n)
+{
+	print_times_table_recursive(n, 0, 0);
 }
