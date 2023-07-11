@@ -9,9 +9,9 @@
  *
  * Return: void
  */
-void error_exit(const char *error, int exit_code)
+void error_exit(const char *error, int exit_code, const char *filename)
 {
-	dprintf(STDERR_FILENO, "Error: %s\n", error);
+	dprintf(STDERR_FILENO, "Error: %s %s\n", error, filename);
 	exit(exit_code);
 }
 /**
@@ -29,25 +29,25 @@ void cp_file(const char *file_from, const char *file_to)
 
 	stat(file_to, &fs_to);
 	if (!(fs_to.st_mode & S_IWUSR))
-		error_exit("Can't write to file", 99);
+		error_exit("Can't write to file", 99, file_to);
 	from = open(file_from, O_RDONLY);
 	if (from < 0)
-		error_exit("Can't read from file", 98);
+		error_exit("Can't read from file", 98, file_from);
 	to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (to < 0)
-		error_exit("Can't write to file", 99);
+		error_exit("Can't write to file", 99, file_to);
 	while ((bytes_read = read(from, buffer, BUFFER_SIZE)) > 0)
 	{
 		bytes_written = write(to, buffer, bytes_read);
 		if (bytes_written == -1 || bytes_written != bytes_read)
-			error_exit("Can't write to file", 99);
+			error_exit("Can't write to file", 99, file_to);
 	}
 	if (bytes_read < 0)
-		error_exit("Can't read from file", 98);
+		error_exit("Can't read from file", 98, file_from);
 	if (close(from) < 0)
-		error_exit("Can't close fd", 100);
+		error_exit("Can't close fd", 100, "");
 	if (close(to) < 0)
-		error_exit("Can't close fd", 100);
+		error_exit("Can't close fd", 100, "");
 }
 /**
  * main - program entry point
