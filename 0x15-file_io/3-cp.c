@@ -28,7 +28,7 @@ void cp_file(const char *file_from, const char *file_to)
 	struct stat fs_to;
 
 	stat(file_to, &fs_to);
-	if (!(fs_to.st_mode & S_IWUSR))
+	if (!(fs_to.st_mode & S_IWUSR) || !(fs_to.st_mode & S_IRUSR))
 		error_exit("Can't write to file", 99, file_to);
 	from = open(file_from, O_RDONLY);
 	if (from < 0)
