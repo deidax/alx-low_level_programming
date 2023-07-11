@@ -32,8 +32,6 @@ void cp_file(const char *file_from, const char *file_to)
 	stat(file_to, &fs_to);
 	if(!(fs_from.st_mode & S_IRUSR))
 		error_exit("Can't read from file", 98, file_from);
-	if (!(fs_to.st_mode & S_IWUSR))
-		error_exit("Can't write to file", 99, file_to);
 	from = open(file_from, O_RDONLY);
 	if (from < 0)
 		error_exit("Can't read from file", 98, file_from);
