@@ -26,9 +26,13 @@ void cp_file(const char *file_from, const char *file_to)
 	int from, to, bytes_read, bytes_written;
 	char buffer[BUFFER_SIZE];
 	struct stat fs_to;
-
+	struct stat fs_from;
+	
+	stat(file_from, &fs_from);
 	stat(file_to, &fs_to);
-	if (!(fs_to.st_mode & S_IWUSR) || !(fs_to.st_mode & S_IRUSR))
+	if(!(fs_from.st_mode & S_IRUSR))
+		error_exit("Can't read from file", 98, file_from);
+	if (!(fs_to.st_mode & S_IWUSR))
 		error_exit("Can't write to file", 99, file_to);
 	from = open(file_from, O_RDONLY);
 	if (from < 0)
