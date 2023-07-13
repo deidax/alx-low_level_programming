@@ -7,6 +7,7 @@ int main(void)
 	char *line = NULL;
 	size_t bufsize = 0;
 	char *token = "";
+	char *delim = " '\n''\t'";
 
 	while (1)
 	{
@@ -18,7 +19,7 @@ int main(void)
 		while (token != NULL)
 		{
 			printf("%s\n", token);
-			token = strtok(NULL, " ");
+			token = strtok(NULL, delim);
 		}
 	}
 	free(line);
