@@ -14,3 +14,4 @@ void command_av(command **head, char **cmd);
 command *add_command(command **head, const char *cmd);
 void add_attribute(command *cmd, const char *attr);
 size_t print_command(const command *h);
+size_t print_attributes(const attribute *h);
