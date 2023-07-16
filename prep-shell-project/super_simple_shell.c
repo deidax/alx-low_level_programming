@@ -49,6 +49,22 @@ void command_av(command **head, char **cmd)
 			add_command(head, token);
 	}
 }
+void add_attribute(command *cmd, const char *attr)
+{
+	attribute *node = malloc(sizeof(attribute));
+
+	if (node == NULL)
+		return;
+	node->attr = strdup(attr);
+	if (node->attr == NULL)
+	{
+		free(node->attr);
+		free(node);
+		return;
+	}
+	node->next = cmd->attributes;
+	cmd->attrs = node;
+}
 command *add_command(command **head, const char *cmd)
 {
         command *node = malloc(sizeof(command));
