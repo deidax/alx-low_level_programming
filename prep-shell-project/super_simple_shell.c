@@ -1,15 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-typedef struct command
-{
-        char *cmd;
-        struct command *next;
-} command;
-void shell_prompt(char **cmd);
-void *command_av(char **cmd);
-command add_command(command **head, const *cmd);
+#include "shell.h"
 int main(void)
 {
 	char *cmd = NULL;
@@ -40,20 +32,22 @@ void shell_prompt(char **cmd)
 		strcpy(*cmd, line);
 	free(line);
 }
-void *command_av(command **head, char **cmd)
+void command_av(command **head, char **cmd)
 {
 	char *token = "";
 	char *delim = " '\n''\t'";
 
 	token = strtok(*cmd, delim);
-	add_command(&head, token);
+	add_command(head, token);
+	print_command(*head);
 	while (token != NULL)
 	{
+		printf("%s\n", token);
 		token = strtok(NULL, delim);
-		add_command(&head, token);
+		add_command(head, token);
 	}
 }
-command add_command(command **head, const *cmd)
+command *add_command(command **head, const char *cmd)
 {
         command *node = malloc(sizeof(command));
 
@@ -62,11 +56,27 @@ command add_command(command **head, const *cmd)
         node->cmd = strdup(cmd);
         if (node->cmd == NULL)
         {
-                free(node->str);
+                free(node->cmd);
                 free(node);
                 return (NULL);
         }
         node->next = *head;
         *head = node;
+
         return (*head);
+}
+size_t print_command(const command *h)
+{
+	size_t size = 0;
+
+	while (h != NULL)
+	{
+		size++;
+		if (h->cmd == NULL)
+			printf("[%u] %s\n", 0, "(nil)");
+		else
+			printf("-> %s\n", h->cmd);
+		h = h->next;
+	}
+	return (size);
 }
