@@ -38,13 +38,15 @@ void command_av(command **head, char **cmd)
 	char *delim = " '\n''\t'";
 
 	token = strtok(*cmd, delim);
-	add_command(head, token);
+	if (token != NULL)
+		add_command(head, token);
 	print_command(*head);
 	while (token != NULL)
 	{
 		printf("%s\n", token);
 		token = strtok(NULL, delim);
-		add_command(head, token);
+		if (token != NULL)
+			add_command(head, token);
 	}
 }
 command *add_command(command **head, const char *cmd)
