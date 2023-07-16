@@ -2,11 +2,11 @@ typedef struct attribute
 {
 	char *attr;
 	struct attribute *next;
-}
+} attribute;
 typedef struct command
 {
         char *cmd;
-	attribute attrs;
+	attribute *attrs;
         struct command *next;
 } command;
 void shell_prompt(char **cmd);

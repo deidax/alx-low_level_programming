@@ -62,7 +62,7 @@ void add_attribute(command *cmd, const char *attr)
 		free(node);
 		return;
 	}
-	node->next = cmd->attributes;
+	node->next = cmd->attrs;
 	cmd->attrs = node;
 }
 command *add_command(command **head, const char *cmd)
@@ -78,6 +78,7 @@ command *add_command(command **head, const char *cmd)
                 free(node);
                 return (NULL);
         }
+	node->attrs = NULL;
         node->next = *head;
         *head = node;
 
