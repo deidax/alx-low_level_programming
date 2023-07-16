@@ -2,21 +2,26 @@
 #include <stdlib.h>
 #include <string.h>
 
+typedef struct command
+{
+        char *cmd;
+        struct command *next;
+} command;
 void shell_prompt(char **cmd);
-char *command_av(char **cmd);
-
+void *command_av(char **cmd);
+command add_command(command **head, const *cmd);
 int main(void)
 {
 	char *cmd = NULL;
 	char *tokens = NULL;
+	command *head = NULL;
 	while (1)
 	{
 		shell_prompt(&cmd);
 		if (cmd != NULL)
 		{
 			printf("%s", cmd);
-			tokens = command_av(&cmd);
-			printf("%s", tokens);
+			command_av(&head, &cmd);
 			free(cmd);
 		}
 	}
@@ -35,15 +40,33 @@ void shell_prompt(char **cmd)
 		strcpy(*cmd, line);
 	free(line);
 }
-char *command_av(char **cmd)
+void *command_av(command **head, char **cmd)
 {
 	char *token = "";
 	char *delim = " '\n''\t'";
 
 	token = strtok(*cmd, delim);
+	add_command(&head, token);
 	while (token != NULL)
 	{
 		token = strtok(NULL, delim);
+		add_command(&head, token);
 	}
-	return token;
+}
+command add_command(command **head, const *cmd)
+{
+        command *node = malloc(sizeof(command));
+
+        if (node == NULL)
+                return (NULL);
+        node->cmd = strdup(cmd);
+        if (node->cmd == NULL)
+        {
+                free(node->str);
+                free(node);
+                return (NULL);
+        }
+        node->next = *head;
+        *head = node;
+        return (*head);
 }
