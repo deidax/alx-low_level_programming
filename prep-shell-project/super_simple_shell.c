@@ -14,6 +14,7 @@ int main(void)
 		{
 			command_av(&head, &cmd);
 			print_command(head);
+			exec_cmd(cmd);
 			free(cmd);
 		}
 	}
@@ -115,4 +116,13 @@ size_t print_attributes(const attribute *h)
 		h = h->next;
 	}
 	return (size);
+}
+void exec_cmd(const command *h)
+{
+	char *argv[] = {h->cmd, h->attr, NULL};
+	int val = execve(argv[0], argv, NULL);
+
+	if (val == -1)
+		perror("Command error\n");
+	printf("-----[exec]-----\n");
 }
