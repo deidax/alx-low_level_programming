@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include "shell.h"
 int main(void)
 {
@@ -14,7 +15,7 @@ int main(void)
 		{
 			command_av(&head, &cmd);
 			print_command(head);
-			exec_cmd(cmd);
+			exec_cmd(head);
 			free(cmd);
 		}
 	}
@@ -119,7 +120,7 @@ size_t print_attributes(const attribute *h)
 }
 void exec_cmd(const command *h)
 {
-	char *argv[] = {h->cmd, h->attr, NULL};
+	char *argv[] = {h->cmd, h->attrs->attr, NULL};
 	int val = execve(argv[0], argv, NULL);
 
 	if (val == -1)

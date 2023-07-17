@@ -15,3 +15,4 @@ command *add_command(command **head, const char *cmd);
 void add_attribute(command *cmd, const char *attr);
 size_t print_command(const command *h);
 size_t print_attributes(const attribute *h);
+void exec_cmd(const command *h);
