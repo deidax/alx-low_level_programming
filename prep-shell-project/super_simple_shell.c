@@ -53,14 +53,15 @@ void add_attribute(command *cmd, const char *attr)
 {
 	attribute *node = malloc(sizeof(attribute));
 
-	if (node == NULL)
+	if (node == NULL || cmd == NULL)
+	{
 		return;
+	}
 	node->attr = strdup(attr);
 	if (node->attr == NULL)
 	{
 		free(node->attr);
 		free(node);
-		return;
 	}
 	node->next = cmd->attrs;
 	cmd->attrs = node;
@@ -120,10 +121,20 @@ size_t print_attributes(const attribute *h)
 }
 void exec_cmd(const command *h)
 {
-	char *argv[] = {h->cmd, h->attrs->attr, NULL};
-	int val = execve(argv[0], argv, NULL);
+	char *argv[3] = {NULL};
+	int val = 0;
+	
+	if (h == NULL)
+		return;
+	argv[0] = h->cmd;
+	if (h->attrs == NULL)
+		argv[1] = NULL;
+	else
+		argv[1] = h->attrs->attr;
+	argv[1] = NULL;
+	argv[2] = NULL;
+	val = execve(argv[0], argv, NULL);
 
 	if (val == -1)
 		perror("Command error\n");
-	printf("-----[exec]-----\n");
 }
