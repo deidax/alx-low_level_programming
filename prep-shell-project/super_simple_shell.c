@@ -13,6 +13,7 @@ int main(void)
 		if (cmd != NULL)
 		{
 			command_av(&head, &cmd);
+			print_command(head);
 			free(cmd);
 		}
 	}
@@ -39,7 +40,6 @@ void command_av(command **head, char **cmd)
 	token = strtok(*cmd, delim);
 	if (token != NULL)
 		add_command(head, token);
-	print_command(*head);
 	while (token != NULL)
 	{
 		token = strtok(NULL, delim);
