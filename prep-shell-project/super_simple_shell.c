@@ -2,12 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/wait.h>
 #include "shell.h"
 int main(void)
 {
 	char *cmd = NULL;
 	char *tokens = NULL;
 	command *head = NULL;
+	pid_t pid;
 	while (1)
 	{
 		shell_prompt(&cmd);
@@ -15,7 +17,23 @@ int main(void)
 		{
 			command_av(&head, &cmd);
 			print_command(head);
-			exec_cmd(head);
+			pid = fork();
+			if (pid == -1)
+			{
+				printf("Error creating the process\n");
+				continue;
+			}
+			if (pid == 0)
+			{
+				/*child process*/
+				exec_cmd(head);
+				exit(EXIT_SUCCESS);
+			}
+			else
+			{
+				/*parent process*/
+				wait(NULL);
+			}
 			free(cmd);
 		}
 	}
@@ -131,7 +149,6 @@ void exec_cmd(const command *h)
 		argv[1] = NULL;
 	else
 		argv[1] = h->attrs->attr;
-	argv[1] = NULL;
 	argv[2] = NULL;
 	val = execve(argv[0], argv, NULL);
 
